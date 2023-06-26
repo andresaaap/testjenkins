@@ -13,7 +13,7 @@ pipeline {
         stage('Publish Over SSH') {
             steps {
                 sshPublisher(publishers: [
-                    sshPublisherDesc(configName: 'SSH_Config', transfers: [
+                    sshPublisherDesc(configName: 'Host2', transfers: [
                         sshTransfer(execCommand: "mkdir -p /home/ec2-user/newfiles", execTimeout: 120000),
                         sshTransfer(remoteDirectory: "/home/ec2-user/newfiles", sourceFiles: "andres.txt")
                     ])

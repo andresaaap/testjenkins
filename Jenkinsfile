@@ -4,6 +4,15 @@ pipeline {
     agent any
 
     stages {
+
+        stage('Create File') {
+            steps {
+                script {
+                    writeFile file: 'andres.txt', text: 'hello'
+                }
+            }
+        }
+
         stage('Build') {
             steps {
                 // Build your project here
@@ -40,7 +49,7 @@ pipeline {
         always {
             // Unstash the file(s) from the stash and move them to the artifacts folder
             unstash 'myStash'
-            archiveArtifacts artifacts: '/home/ec2-user/andres.txt', fingerprint: true
+            archiveArtifacts artifacts: 'andres.txt', fingerprint: true
         }
     }
 }

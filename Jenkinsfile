@@ -21,7 +21,7 @@ pipeline {
                 publishers: [
                     sshPublisherDesc(
                     configName: "Host2",
-                    transfers: [sshTransfer(sourceFiles: 'feli.txt')],
+                    transfers: [sshTransfer(sourceFiles: '/home/ec2-user/andres.txt')],
                     verbose: true
                     )
                 ]

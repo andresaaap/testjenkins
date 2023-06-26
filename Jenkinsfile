@@ -21,7 +21,7 @@ pipeline {
                             configName: "Host2",
                             verbose: true,
                             transfers: [
-                                sshTransfer(sourceFiles: "**.txt",)
+                                sshTransfer(sourceFiles: "andres.txt",)
                             ]
                         )
                     ]

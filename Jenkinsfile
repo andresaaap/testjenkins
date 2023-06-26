@@ -32,14 +32,13 @@ pipeline {
             }
         }
 
-    
+    }
+
     post {
         always {
             // Unstash the file(s) from the stash and move them to the artifacts folder
             unstash 'myStash'
             archiveArtifacts artifacts: '/home/ec2-user/andres.txt', fingerprint: true
         }
-    }
-
     }
 }

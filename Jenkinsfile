@@ -7,6 +7,8 @@ pipeline {
         stage('Build') {
             steps {
                 // Build your project here
+                sh 'ls'
+                sh 'pwd'
                 
                 // Stash the file(s) you want to move to the artifacts folder
                 stash includes: 'andres.txt', name: 'myStash'

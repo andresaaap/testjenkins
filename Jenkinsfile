@@ -9,7 +9,7 @@ pipeline {
                 // Build your project here
                 
                 // Stash the file(s) you want to move to the artifacts folder
-                stash includes: '/home/ec2-user/andres.txt', name: 'myStash'
+                stash includes: 'andres.txt', name: 'myStash'
             }
         }
 

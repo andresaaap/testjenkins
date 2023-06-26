@@ -6,7 +6,10 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                sh 'echo "Hello"'
+                // Build your project here
+                
+                // Stash the file(s) you want to move to the artifacts folder
+                stash includes: '/home/ec2-user/andres.txt', name: 'myStash'
             }
         }
 
@@ -28,5 +31,15 @@ pipeline {
                 )
             }
         }
+
+    
+    post {
+        always {
+            // Unstash the file(s) from the stash and move them to the artifacts folder
+            unstash 'myStash'
+            archiveArtifacts artifacts: '/home/ec2-user/andres.txt', fingerprint: true
+        }
+    }
+
     }
 }

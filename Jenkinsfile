@@ -10,15 +10,23 @@ pipeline {
             }
         }
 
-        stage('Publish Over SSH') {
+        // Publish over ssh the file andres.txt with configName Host2
+
+        stage('Deploy') {
+            agent any
             steps {
-                sshPublisher(publishers: [
-                    sshPublisherDesc(configName: 'Host2', transfers: [
-                        sshTransfer(execCommand: "mkdir -p /home/ec2-user/newfiles", execTimeout: 120000),
-                        sshTransfer(remoteDirectory: "/home/ec2-user/newfiles", sourceFiles: "andres.txt")
-                    ])
-                ])
+                sshPublisher(
+                continueOnError: false, 
+                failOnError: true,
+                publishers: [
+                    sshPublisherDesc(
+                    configName: "Host2",
+                    transfers: [sshTransfer(sourceFiles: 'andres.txt')],
+                    verbose: true
+                    )
+                ]
+                )
             }
-        }
+            }
     }
 }

@@ -1,0 +1,13 @@
+# configuration for docker-compose with image tomcat:9.0 and attach a volume to the container
+# to store the application data
+
+version: '3.3'
+services:
+  tomcat:
+    image: tomcat:9.0
+    ports:
+      - "8888:8080"
+    expose:
+      - "8888"
+    volumes:
+      - ./data:/usr/local/tomcat/webapps
